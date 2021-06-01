@@ -8,8 +8,6 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/filter.css">
-<link rel="stylesheet" href="css/nouislider.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
@@ -32,9 +30,6 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-        <script src="js/tailDT.js"></script>
-<script src="js/nouislider.min.js"></script>
-<script src="js/wNumb.js"></script>
         <script src="data/CCaspres_1.js"></script>
         <script src="data/Decheterie_2.js"></script>
         <script src="data/Dechetsdesoins_3.js"></script>
@@ -184,7 +179,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(231,113,72,1.0)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_Decheterie_2');
@@ -192,7 +187,7 @@
         map.getPane('pane_Decheterie_2').style['mix-blend-mode'] = 'normal';
         var layer_Decheterie_2 = new L.geoJson(json_Decheterie_2, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_Decheterie_2',
             layerName: 'layer_Decheterie_2',
             pane: 'pane_Decheterie_2',
@@ -235,7 +230,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(183,72,75,1.0)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_Dechetsdesoins_3');
@@ -243,7 +238,7 @@
         map.getPane('pane_Dechetsdesoins_3').style['mix-blend-mode'] = 'normal';
         var layer_Dechetsdesoins_3 = new L.geoJson(json_Dechetsdesoins_3, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_Dechetsdesoins_3',
             layerName: 'layer_Dechetsdesoins_3',
             pane: 'pane_Dechetsdesoins_3',
@@ -289,7 +284,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(0,177,3,1.0)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_Colonneaverre_4');
@@ -297,7 +292,7 @@
         map.getPane('pane_Colonneaverre_4').style['mix-blend-mode'] = 'normal';
         var layer_Colonneaverre_4 = new L.geoJson(json_Colonneaverre_4, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_Colonneaverre_4',
             layerName: 'layer_Colonneaverre_4',
             pane: 'pane_Colonneaverre_4',
@@ -343,7 +338,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(243,166,178,1.0)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_Colonnetextile_5');
@@ -351,7 +346,7 @@
         map.getPane('pane_Colonnetextile_5').style['mix-blend-mode'] = 'normal';
         var layer_Colonnetextile_5 = new L.geoJson(json_Colonnetextile_5, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_Colonnetextile_5',
             layerName: 'layer_Colonnetextile_5',
             pane: 'pane_Colonnetextile_5',
@@ -394,7 +389,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,158,23,1.0)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_Composteurs_6');
@@ -402,7 +397,7 @@
         map.getPane('pane_Composteurs_6').style['mix-blend-mode'] = 'normal';
         var layer_Composteurs_6 = new L.geoJson(json_Composteurs_6, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_Composteurs_6',
             layerName: 'layer_Composteurs_6',
             pane: 'pane_Composteurs_6',
@@ -430,293 +425,6 @@
         var baseMaps = {};
         L.control.layers(baseMaps,{'<img src="legend/Composteurs_6.png" /> Composteurs': layer_Composteurs_6,'<img src="legend/Colonnetextile_5.png" /> Colonne textile': layer_Colonnetextile_5,'<img src="legend/Colonneaverre_4.png" /> Colonne a verre': layer_Colonneaverre_4,'<img src="legend/Dechetsdesoins_3.png" /> Dechets de soins': layer_Dechetsdesoins_3,'<img src="legend/Decheterie_2.png" /> Decheterie': layer_Decheterie_2,'<img src="legend/CCaspres_1.png" /> CC aspres': layer_CCaspres_1,"Google Hybrid": layer_GoogleHybrid_0,},{collapsed:false}).addTo(map);
         setBounds();
-        var mapDiv = document.getElementById('map');
-        var row = document.createElement('div');
-        row.className="row";
-        row.id="all";
-        row.style.height = "100%";
-        var col1 = document.createElement('div');
-        col1.className="col9";
-        col1.id = "mapWindow";
-        col1.style.height = "99%";
-        col1.style.width = "80%";
-        col1.style.display = "inline-block";
-        var col2 = document.createElement('div');
-        col2.className="col3";
-        col2.id = "menu";
-        col2.style.display = "inline-block";
-        mapDiv.parentNode.insertBefore(row, mapDiv);
-        document.getElementById("all").appendChild(col1);
-        document.getElementById("all").appendChild(col2);
-        col1.appendChild(mapDiv)
-        var Filters = {"X_CHF_LIEU": "int","ID_GEOFLA": "int","NOM_DEPT": "str","Nom": "str"};
-        function filterFunc() {
-          map.eachLayer(function(lyr){
-          if ("options" in lyr && "dataVar" in lyr["options"]){
-            features = this[lyr["options"]["dataVar"]].features.slice(0);
-            try{
-              for (key in Filters){
-                keyS = key.replace(/[^a-zA-Z0-9_]/g, "")
-                if (Filters[key] == "str" || Filters[key] == "bool"){
-                  var selection = [];
-                  var options = document.getElementById("sel_" + keyS).options
-                  for (var i=0; i < options.length; i++) {
-                    if (options[i].selected) selection.push(options[i].value);
-                  }
-                    try{
-                      if (key in features[0].properties){
-                        for (i = features.length - 1;
-                          i >= 0; --i){
-                          if (selection.indexOf(
-                          features[i].properties[key])<0
-                          && selection.length>0) {
-                          features.splice(i,1);
-                          }
-                        }
-                      }
-                    } catch(err){
-                  }
-                }
-                if (Filters[key] == "int"){
-                  sliderVals =  document.getElementById(
-                    "div_" + keyS).noUiSlider.get();
-                  try{
-                    if (key in features[0].properties){
-                    for (i = features.length - 1; i >= 0; --i){
-                      if (parseInt(features[i].properties[key])
-                          < sliderVals[0]
-                          || parseInt(features[i].properties[key])
-                          > sliderVals[1]){
-                            features.splice(i,1);
-                          }
-                        }
-                      }
-                    } catch(err){
-                    }
-                  }
-                if (Filters[key] == "real"){
-                  sliderVals =  document.getElementById(
-                    "div_" + keyS).noUiSlider.get();
-                  try{
-                    if (key in features[0].properties){
-                    for (i = features.length - 1; i >= 0; --i){
-                      if (features[i].properties[key]
-                          < sliderVals[0]
-                          || features[i].properties[key]
-                          > sliderVals[1]){
-                            features.splice(i,1);
-                          }
-                        }
-                      }
-                    } catch(err){
-                    }
-                  }
-                if (Filters[key] == "date"
-                  || Filters[key] == "datetime"
-                  || Filters[key] == "time"){
-                  try{
-                    if (key in features[0].properties){
-                      HTMLkey = key.replace(/[&\/\\#,+()$~%.'":*?<>{} ]/g, '');
-                      startdate = document.getElementById("dat_" +
-                        HTMLkey + "_date1").value.replace(" ", "T");
-                      enddate = document.getElementById("dat_" +
-                        HTMLkey + "_date2").value.replace(" ", "T");
-                      for (i = features.length - 1; i >= 0; --i){
-                        if (features[i].properties[key] < startdate
-                          || features[i].properties[key] > enddate){
-                          features.splice(i,1);
-                        }
-                      }
-                    }
-                  } catch(err){
-                  }
-                }
-              }
-            } catch(err){
-            }
-          this[lyr["options"]["layerName"]].clearLayers();
-          this[lyr["options"]["layerName"]].addData(features);
-          }
-          })
-        }
-            document.getElementById("menu").appendChild(
-                document.createElement("div"));
-            var div_X_CHF_LIEU = document.createElement("div");
-            div_X_CHF_LIEU.id = "div_X_CHF_LIEU";
-            div_X_CHF_LIEU.className = "slider";
-            document.getElementById("menu").appendChild(div_X_CHF_LIEU);
-            var lab_X_CHF_LIEU = document.createElement('div');
-            lab_X_CHF_LIEU.innerHTML  = 'X_CHF_LIEU: <span id="val_X_CHF_LIEU"></span>';
-            lab_X_CHF_LIEU.className = 'filterlabel';
-            document.getElementById("menu").appendChild(lab_X_CHF_LIEU);
-            var reset_X_CHF_LIEU = document.createElement('div');
-            reset_X_CHF_LIEU.innerHTML = 'clear filter';
-            reset_X_CHF_LIEU.className = 'filterlabel';
-            lab_X_CHF_LIEU.className = 'filterlabel';
-            reset_X_CHF_LIEU.onclick = function() {
-                sel_X_CHF_LIEU.noUiSlider.reset();
-            };
-            document.getElementById("menu").appendChild(reset_X_CHF_LIEU);
-            var sel_X_CHF_LIEU = document.getElementById('div_X_CHF_LIEU');
-            noUiSlider.create(sel_X_CHF_LIEU, {
-                connect: true,
-                start: [6732, 6920],
-                step: 1,
-                format: wNumb({
-                    decimals: 0,
-                    }),
-                range: {
-                min: 6732,
-                max: 6920
-                }
-            });
-            sel_X_CHF_LIEU.noUiSlider.on('update', function (values) {
-            filterVals =[];
-            for (value in values){
-            filterVals.push(parseInt(value))
-            }
-            val_X_CHF_LIEU = document.getElementById('val_X_CHF_LIEU');
-            val_X_CHF_LIEU.innerHTML = values.join(' - ');
-                filterFunc()
-            });
-            document.getElementById("menu").appendChild(
-                document.createElement("div"));
-            var div_ID_GEOFLA = document.createElement("div");
-            div_ID_GEOFLA.id = "div_ID_GEOFLA";
-            div_ID_GEOFLA.className = "slider";
-            document.getElementById("menu").appendChild(div_ID_GEOFLA);
-            var lab_ID_GEOFLA = document.createElement('div');
-            lab_ID_GEOFLA.innerHTML  = 'ID_GEOFLA: <span id="val_ID_GEOFLA"></span>';
-            lab_ID_GEOFLA.className = 'filterlabel';
-            document.getElementById("menu").appendChild(lab_ID_GEOFLA);
-            var reset_ID_GEOFLA = document.createElement('div');
-            reset_ID_GEOFLA.innerHTML = 'clear filter';
-            reset_ID_GEOFLA.className = 'filterlabel';
-            lab_ID_GEOFLA.className = 'filterlabel';
-            reset_ID_GEOFLA.onclick = function() {
-                sel_ID_GEOFLA.noUiSlider.reset();
-            };
-            document.getElementById("menu").appendChild(reset_ID_GEOFLA);
-            var sel_ID_GEOFLA = document.getElementById('div_ID_GEOFLA');
-            noUiSlider.create(sel_ID_GEOFLA, {
-                connect: true,
-                start: [2805, 36283],
-                step: 1,
-                format: wNumb({
-                    decimals: 0,
-                    }),
-                range: {
-                min: 2805,
-                max: 36283
-                }
-            });
-            sel_ID_GEOFLA.noUiSlider.on('update', function (values) {
-            filterVals =[];
-            for (value in values){
-            filterVals.push(parseInt(value))
-            }
-            val_ID_GEOFLA = document.getElementById('val_ID_GEOFLA');
-            val_ID_GEOFLA.innerHTML = values.join(' - ');
-                filterFunc()
-            });
-            document.getElementById("menu").appendChild(
-                document.createElement("div"));
-            var div_NOM_DEPT = document.createElement('div');
-            div_NOM_DEPT.id = "div_NOM_DEPT";
-            div_NOM_DEPT.className= "filterselect";
-            document.getElementById("menu").appendChild(div_NOM_DEPT);
-            sel_NOM_DEPT = document.createElement('select');
-            sel_NOM_DEPT.multiple = true;
-            sel_NOM_DEPT.size = 1;
-            sel_NOM_DEPT.id = "sel_NOM_DEPT";
-            var NOM_DEPT_options_str = "<option value='' unselected></option>";
-            sel_NOM_DEPT.onchange = function(){filterFunc()};
-            NOM_DEPT_options_str  += '<option value="PYRENEES-ORIENTALES">PYRENEES-ORIENTALES</option>';
-            sel_NOM_DEPT.innerHTML = NOM_DEPT_options_str;
-            div_NOM_DEPT.appendChild(sel_NOM_DEPT);
-            var lab_NOM_DEPT = document.createElement('div');
-            lab_NOM_DEPT.innerHTML = 'NOM_DEPT';
-            lab_NOM_DEPT.className = 'filterlabel';
-            div_NOM_DEPT.appendChild(lab_NOM_DEPT);
-            var reset_NOM_DEPT = document.createElement('div');
-            reset_NOM_DEPT.innerHTML = 'clear filter';
-            reset_NOM_DEPT.className = 'filterlabel';
-            reset_NOM_DEPT.onclick = function() {
-                var options = document.getElementById("sel_NOM_DEPT").options;
-                for (var i=0; i < options.length; i++) {
-                    options[i].selected = false;
-                }
-                filterFunc();
-            };
-            div_NOM_DEPT.appendChild(reset_NOM_DEPT);
-            document.getElementById("menu").appendChild(
-                document.createElement("div"));
-            var div_Nom = document.createElement('div');
-            div_Nom.id = "div_Nom";
-            div_Nom.className= "filterselect";
-            document.getElementById("menu").appendChild(div_Nom);
-            sel_Nom = document.createElement('select');
-            sel_Nom.multiple = true;
-            sel_Nom.size = 10;
-            sel_Nom.id = "sel_Nom";
-            var Nom_options_str = "<option value='' unselected></option>";
-            sel_Nom.onchange = function(){filterFunc()};
-            Nom_options_str  += '<option value="Banuyles dels Aspres - route de tresserre">Banuyles dels Aspres - route de tresserre</option>';
-            Nom_options_str  += '<option value="Banuyls dels Aspres - rue de la Tramontane">Banuyls dels Aspres - rue de la Tramontane</option>';
-            Nom_options_str  += '<option value="Banyuls dels Aspres - Pharmacie Paccianus">Banyuls dels Aspres - Pharmacie Paccianus</option>';
-            Nom_options_str  += '<option value="Brouillas - ecole">Brouillas - ecole</option>';
-            Nom_options_str  += '<option value="Brouillas - place de la Mairie">Brouillas - place de la Mairie</option>';
-            Nom_options_str  += '<option value="Camelas - l&apos;auxineill">Camelas - l&apos;auxineill</option>';
-            Nom_options_str  += '<option value="Camelas - rond point du bas">Camelas - rond point du bas</option>';
-            Nom_options_str  += '<option value="Decheterie de Thuir">Decheterie de Thuir</option>';
-            Nom_options_str  += '<option value="Decheterie de Trouillas">Decheterie de Trouillas</option>';
-            Nom_options_str  += '<option value="Fourques - Cave Cooperative">Fourques - Cave Cooperative</option>';
-            Nom_options_str  += '<option value="Fourques - Lotissement le Reart">Fourques - Lotissement le Reart</option>';
-            Nom_options_str  += '<option value="Fourques - Parking centre ville">Fourques - Parking centre ville</option>';
-            Nom_options_str  += '<option value="Fourques - Pharmacie des Aspres">Fourques - Pharmacie des Aspres</option>';
-            Nom_options_str  += '<option value="Fourques - rue du docteur massine">Fourques - rue du docteur massine</option>';
-            Nom_options_str  += '<option value="Llauro - Parking ecole">Llauro - Parking ecole</option>';
-            Nom_options_str  += '<option value="Llauro - Rue des Acacias">Llauro - Rue des Acacias</option>';
-            Nom_options_str  += '<option value="Montauriol - Les Hostalets">Montauriol - Les Hostalets</option>';
-            Nom_options_str  += '<option value="Montauriol - Mas krik">Montauriol - Mas krik</option>';
-            Nom_options_str  += '<option value="Oms - La font">Oms - La font</option>';
-            Nom_options_str  += '<option value="Passa - Parking avenue torcatis">Passa - Parking avenue torcatis</option>';
-            Nom_options_str  += '<option value="Saint-Jean-Lasseille - Parking rue des Rossignols">Saint-Jean-Lasseille - Parking rue des Rossignols</option>';
-            Nom_options_str  += '<option value="Terrats - Cave Coopérative">Terrats - Cave Coopérative</option>';
-            Nom_options_str  += '<option value="Thuir - HLM Louis Noguère">Thuir - HLM Louis Noguère</option>';
-            Nom_options_str  += '<option value="Thuir - MC Pharma">Thuir - MC Pharma</option>';
-            Nom_options_str  += '<option value="Thuir - Pharmacie Moulet">Thuir - Pharmacie Moulet</option>';
-            Nom_options_str  += '<option value="Thuir - Pharmacie Ribes Patrick">Thuir - Pharmacie Ribes Patrick</option>';
-            Nom_options_str  += '<option value="Thuir - association Thuir Solidarité">Thuir - association Thuir Solidarité</option>';
-            Nom_options_str  += '<option value="Thuir - decheterie">Thuir - decheterie</option>';
-            Nom_options_str  += '<option value="Torderes - Parking ecole">Torderes - Parking ecole</option>';
-            Nom_options_str  += '<option value="Tresserres - Parkin rue du Pla Del Rey">Tresserres - Parkin rue du Pla Del Rey</option>';
-            Nom_options_str  += '<option value="Trouillas - Avenue du Monaster">Trouillas - Avenue du Monaster</option>';
-            Nom_options_str  += '<option value="Trouillas - Cimetiere">Trouillas - Cimetiere</option>';
-            Nom_options_str  += '<option value="Trouillas - Groupe scolaire">Trouillas - Groupe scolaire</option>';
-            Nom_options_str  += '<option value="Trouillas - Pharmacie farines">Trouillas - Pharmacie farines</option>';
-            Nom_options_str  += '<option value="Trouillas - decheterie">Trouillas - decheterie</option>';
-            Nom_options_str  += '<option value="Trouillas - le Thonkin">Trouillas - le Thonkin</option>';
-            Nom_options_str  += '<option value="Trouillas - les hauts plateaux">Trouillas - les hauts plateaux</option>';
-            Nom_options_str  += '<option value="Villemolaque - Las Hortes">Villemolaque - Las Hortes</option>';
-            Nom_options_str  += '<option value="Villemolaque - ecole">Villemolaque - ecole</option>';
-            sel_Nom.innerHTML = Nom_options_str;
-            div_Nom.appendChild(sel_Nom);
-            var lab_Nom = document.createElement('div');
-            lab_Nom.innerHTML = 'Nom';
-            lab_Nom.className = 'filterlabel';
-            div_Nom.appendChild(lab_Nom);
-            var reset_Nom = document.createElement('div');
-            reset_Nom.innerHTML = 'clear filter';
-            reset_Nom.className = 'filterlabel';
-            reset_Nom.onclick = function() {
-                var options = document.getElementById("sel_Nom").options;
-                for (var i=0; i < options.length; i++) {
-                    options[i].selected = false;
-                }
-                filterFunc();
-            };
-            div_Nom.appendChild(reset_Nom);
         resetLabels([layer_Colonneaverre_4]);
         map.on("zoomend", function(){
             resetLabels([layer_Colonneaverre_4]);
