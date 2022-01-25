@@ -37,20 +37,7 @@ layerSwitcher.hidePanel = function() {};
 layerSwitcher.showPanel();
 
 
-    var searchLayer = new SearchLayer({
-      layer: lyr_Communes_Aspres_1,
-      colName: 'NOM_COMM',
-      zoom: 10,
-      collapsed: true,
-      map: map
-    });
-
-    map.addControl(searchLayer);
-    document.getElementsByClassName('search-layer')[0]
-    .getElementsByTagName('button')[0].className +=
-    ' fa fa-binoculars';
-    
-map.getView().fit([283033.216498, 5236401.000672, 337523.768594, 5262622.751144], map.getSize());
+map.getView().fit([305757.118378, 5254961.848298, 308507.171800, 5256285.219265], map.getSize());
 
 var NO_POPUP = 0
 var ALL_FIELDS = 1
